@@ -1,11 +1,11 @@
 {
-  "name": "api-ytdl",
+  "name": "ytapi",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "api/youtube.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node api/youtube.js"
   },
   "keywords": [],
   "author": "",
