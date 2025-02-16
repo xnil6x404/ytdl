@@ -1,11 +1,11 @@
-import axios from "axios";
+const express = require("express");
+const axios = require("axios");
 
-export default async function handler(req, res) {
-    if (req.method !== "GET") {
-        return res.status(405).json({ error: "Phương thức không được hỗ trợ!" });
-    }
+const app = express();
+const PORT = 3000;
 
-    const url = req.query.url; // Lấy URL từ query string
+app.get("/api/youtube", async (req, res) => {
+    const url = req.query.url; // Nhận URL từ query string
 
     if (!url) {
         return res.status(400).json({ error: "Thiếu URL!" });
@@ -27,15 +27,21 @@ export default async function handler(req, res) {
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, như Gecko) Chrome/132.0.0.0 Safari/537.36",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
             "x-requested-with": "XMLHttpRequest"
         };
 
+        // Dữ liệu gửi đi (cần format theo API của iloveyt)
         const formData = `url=${encodeURIComponent(url)}`;
+
         const response = await axios.post("https://iloveyt.net/proxy.php", formData, { headers });
 
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: "Lỗi khi lấy dữ liệu từ iloveyt", details: error.message });
     }
-}
+});
+
+app.listen(PORT, () => {
+    console.log(`Server đang chạy tại http://localhost:${PORT}`);
+});
