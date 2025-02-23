@@ -62,7 +62,7 @@ module.exports = {
       }
       
       const category = args[1];
-      const allowedCategories = ["anime", "love", "funny", "Islamic", "sad", "lofi", "attitude", "horny", "couple", "b&c"];
+      const allowedCategories = ["anime", "love", "funny", "islamic", "sad", "lofi", "attitude", "horny", "couple", "b&c"];
       
       if (!category || !allowedCategories.includes(category.toLowerCase())) {
         return api.sendMessage("⚠️ Invalid category. Please provide a valid category.\n\nAllowed categories: " + allowedCategories.join(", "), event.threadID, event.messageID);
