@@ -35,7 +35,7 @@ module.exports = {
          7        𝐀𝐭𝐭𝐢𝐭𝐮𝐝𝐞 𝐕𝐢𝐝𝐞𝐨           ${d.categories.attitude}
          8        𝐇𝐨𝐫𝐧𝐲 𝐕𝐢𝐝𝐞𝐨             ${d.categories.horny}
          9        𝐂𝐨𝐮𝐩𝐥𝐞 𝐕𝐢𝐝𝐞𝐨            ${d.categories.couple}
-         10       𝐁𝐢𝐤𝐞 & 𝐂𝐚𝐫 𝐕𝐢𝐝𝐞𝐨        ${d.categories.b&c}  
+         10       𝐁𝐢𝐤𝐞 & 𝐂𝐚𝐫 𝐕𝐢𝐝𝐞𝐨        ${d.categories.bike}  
 
 -------------------ᴬᴸᴮᵁᴹ---------------------------------
 
@@ -62,7 +62,7 @@ module.exports = {
       }
       
       const category = args[1];
-      const allowedCategories = ["anime", "love", "funny", "islamic", "sad", "lofi", "attitude", "horny", "couple", "b&c"];
+      const allowedCategories = ["anime", "love", "funny", "islamic", "sad", "lofi", "attitude", "horny", "couple", "bike"];
       
       if (!category || !allowedCategories.includes(category.toLowerCase())) {
         return api.sendMessage("⚠️ Invalid category. Please provide a valid category.\n\nAllowed categories: " + allowedCategories.join(", "), event.threadID, event.messageID);
@@ -121,7 +121,7 @@ module.exports = {
           apiUrl = "https://albumapi.vercel.app/album?link=couple";
           break;
           case 10:
-          apiUrl = "https://albumapi.vercel.app/album?link=b&c";
+          apiUrl = "https://albumapi.vercel.app/album?link=bike";
           break;
         default:
           return api.sendMessage("⚠️ Invalid selection. Please enter a valid number from the album.", event.threadID, event.messageID);
